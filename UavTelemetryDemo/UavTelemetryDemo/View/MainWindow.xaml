@@ -12,5 +12,7 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Grid />
+    <StackPanel>
+        <Button Command="{Binding UpdateCommand}" Content="Update" />
+    </StackPanel>
 </controls:MetroWindow>
