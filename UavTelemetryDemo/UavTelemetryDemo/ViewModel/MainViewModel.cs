@@ -1,6 +1,5 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System.Windows;
 
 namespace UavTelemetryDemo.ViewModel
 {
@@ -64,7 +63,6 @@ namespace UavTelemetryDemo.ViewModel
 
         private void UpdateCommandAction()
         {
-            MessageBox.Show("Update Command Executed");
         }
     }
 }
