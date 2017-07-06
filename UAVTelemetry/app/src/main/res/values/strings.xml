@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">UAV Telemetry</string>
+    <string name="altitude">Altitude: </string>
+    <string name="battery">Battery: </string>
+    <string name="generate_mission">Generate Mission</string>
+    <string name="latitude">Latitude: </string>
+    <string name="longitude">Longitude: </string>
+    <string name="mission_generation">Mission Generation</string>
+    <string name="number_of_x">Number of X</string>
+    <string name="number_of_y">Number of Y</string>
+    <string name="telemetry">Telemetry</string>
+    <string name="speed">Speed: </string>
 </resources>

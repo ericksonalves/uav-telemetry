@@ -1,5 +1,8 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using NetMQ;
+using NetMQ.Sockets;
+using System.Text;
 
 namespace UavTelemetryDemo.ViewModel
 {
@@ -63,6 +66,11 @@ namespace UavTelemetryDemo.ViewModel
 
         private void UpdateCommandAction()
         {
+            using (var client = new PublisherSocket())
+            {
+                client.Bind("tcp://192.168.1.19:5556");
+                client.SendFrame("Hello");
+            }
         }
     }
 }
