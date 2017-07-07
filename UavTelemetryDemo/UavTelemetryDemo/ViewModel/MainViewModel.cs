@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using NetMQ;
 using NetMQ.Sockets;
+using System;
 using System.Text;
 
 namespace UavTelemetryDemo.ViewModel
@@ -59,6 +60,8 @@ namespace UavTelemetryDemo.ViewModel
 
         public RelayCommand UpdateCommand { get; set; }
 
+        private PublisherSocket publisherSocket;
+
         public MainViewModel()
         {
             UpdateCommand = new RelayCommand(UpdateCommandAction);
@@ -66,10 +69,15 @@ namespace UavTelemetryDemo.ViewModel
 
         private void UpdateCommandAction()
         {
-            using (var client = new PublisherSocket())
+            using (var subscriberSocket = new SubscriberSocket())
             {
-                client.Bind("tcp://192.168.1.19:5556");
-                client.SendFrame("Hello");
+                subscriberSocket.Connect("tcp://192.168.1.1:5557");
+                subscriberSocket.Subscribe("mission");
+                while (true)
+                {
+                    var message = subscriberSocket.ReceiveFrameString();
+                    Console.WriteLine(message);
+                }
             }
         }
     }
